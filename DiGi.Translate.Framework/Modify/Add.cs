@@ -17,12 +17,12 @@ namespace DiGi.Translate.Framework
         /// <returns><c>true</c> if the translation was successfully added; otherwise, <c>false</c>.</returns>
         public static bool Add(this TranslationModel translationModel, Language language, Control control, bool includeNullOrEmpty = false, bool includeNested = true)
         {
-            if (translationModel == null || language == null || control == null)
+            if (translationModel == null || language is null || control == null)
             {
                 return false;
             }
 
-            string id = control.Id();
+            string? id = control.Id();
             if (id != null)
             {
                 string text = control.Text;
@@ -34,7 +34,7 @@ namespace DiGi.Translate.Framework
 
             if (includeNested)
             {
-                Dictionary<string, string> dictionary = Query.TextDictionary<Control>(control);
+                Dictionary<string, string>? dictionary = Query.TextDictionary<Control>(control);
                 if (dictionary != null)
                 {
                     foreach (KeyValuePair<string, string> keyValuePair in dictionary)

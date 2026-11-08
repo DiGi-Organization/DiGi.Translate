@@ -13,9 +13,9 @@ namespace DiGi.Translate.Framework
         /// <typeparam name="T">The type of controls to retrieve.</typeparam>
         /// <param name="form">The form whose controls are to be retrieved.</param>
         /// <returns>A list of controls of type <typeparam ref="T"/>, or null if the form is null or its control collection is unavailable.</returns>
-        public static List<T> Controls<T>(this Form form) where T : Control
+        public static List<T>? Controls<T>(this Form form) where T : Control
         {
-            List<Control> controls = Controls(form);
+            List<Control>? controls = Controls(form);
             if (controls == null)
             {
                 return null;
@@ -29,9 +29,9 @@ namespace DiGi.Translate.Framework
         /// </summary>
         /// <param name="form">The form whose controls are to be retrieved.</param>
         /// <returns>A list of <see cref="Control"/> objects, or null if the form is null or its control collection is unavailable.</returns>
-        public static List<Control> Controls(this Form form)
+        public static List<Control>? Controls(this Form form)
         {
-            Control.ControlCollection controls = form?.Controls;
+            Control.ControlCollection? controls = form?.Controls;
             if (controls == null)
             {
                 return null;
@@ -58,9 +58,9 @@ namespace DiGi.Translate.Framework
         /// <typeparam name="T">The type of control to retrieve, which must derive from <see cref="Control"/>.</typeparam>
         /// <param name="control">The control whose child controls are to be retrieved.</param>
         /// <returns>A list of controls associated with the specified control, or null if the collection is unavailable.</returns>
-        public static List<T> Controls<T>(this Control control) where T : Control
+        public static List<T>? Controls<T>(this Control control) where T : Control
         {
-            Control.ControlCollection controls = control?.Controls;
+            Control.ControlCollection? controls = control?.Controls;
             if (controls == null)
             {
                 return null;
@@ -89,7 +89,7 @@ namespace DiGi.Translate.Framework
         /// <param name="textComparisonType">The method used to compare the strings.</param>
         /// <param name="caseSensitive">Indicates whether the text comparison should be case-sensitive.</param>
         /// <returns>A list of controls of type <typeparamref name="T"/> that match the criteria, or null if the source control is null.</returns>
-        public static List<T> Controls<T>(this Control control, string text, TextComparisonType textComparisonType, bool caseSensitive = true) where T : Control
+        public static List<T>? Controls<T>(this Control control, string text, TextComparisonType textComparisonType, bool caseSensitive = true) where T : Control
         {
             if (control == null)
             {
@@ -123,7 +123,7 @@ namespace DiGi.Translate.Framework
                 controls = new List<T>();
             }
 
-            Control.ControlCollection controls_Temp = control?.Controls;
+            Control.ControlCollection? controls_Temp = control?.Controls;
             if (controls_Temp == null || controls_Temp.Count == 0)
             {
                 return;
@@ -133,7 +133,7 @@ namespace DiGi.Translate.Framework
             {
                 Controls(control_Temp, ref controls);
 
-                T t = control_Temp as T;
+                T? t = control_Temp as T;
                 if (t == null)
                 {
                     continue;

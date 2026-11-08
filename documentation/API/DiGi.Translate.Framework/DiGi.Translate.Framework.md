@@ -66,7 +66,7 @@ A value indicating whether nested child controls should also be processed\. Defa
 Sets the text content of the specified dependency object if it supports a text property\.
 
 ```csharp
-public static bool SetText(this System.Windows.DependencyObject dependencyObject, string text);
+public static bool SetText(this System.Windows.DependencyObject dependencyObject, string? text);
 ```
 #### Parameters
 
@@ -470,7 +470,7 @@ Inheritance [System\.Object](https://learn.microsoft.com/en-us/dotnet/api/system
 Retrieves a list of all controls associated with the specified form\.
 
 ```csharp
-public static System.Collections.Generic.List<System.Windows.Forms.Control> Controls(this System.Windows.Forms.Form form);
+public static System.Collections.Generic.List<System.Windows.Forms.Control>? Controls(this System.Windows.Forms.Form form);
 ```
 #### Parameters
 
@@ -491,7 +491,7 @@ A list of [System\.Windows\.Forms\.Control](https://learn.microsoft.com/en-us/do
 Retrieves a list of controls associated with the specified control\.
 
 ```csharp
-public static System.Collections.Generic.List<T> Controls<T>(this System.Windows.Forms.Control control)
+public static System.Collections.Generic.List<T>? Controls<T>(this System.Windows.Forms.Control control)
     where T : System.Windows.Forms.Control;
 ```
 #### Type parameters
@@ -520,7 +520,7 @@ A list of controls associated with the specified control, or null if the collect
 Retrieves a list of controls of type [T](DiGi.Translate.Framework.md#DiGi.Translate.Framework.Query.Controls_T_(thisSystem.Windows.Forms.Control,string,DiGi.Core.Enums.TextComparisonType,bool).T 'DiGi\.Translate\.Framework\.Query\.Controls\<T\>\(this System\.Windows\.Forms\.Control, string, DiGi\.Core\.Enums\.TextComparisonType, bool\)\.T') that match the specified text criteria within the control hierarchy\.
 
 ```csharp
-public static System.Collections.Generic.List<T> Controls<T>(this System.Windows.Forms.Control control, string text, DiGi.Core.Enums.TextComparisonType textComparisonType, bool caseSensitive=true)
+public static System.Collections.Generic.List<T>? Controls<T>(this System.Windows.Forms.Control control, string text, DiGi.Core.Enums.TextComparisonType textComparisonType, bool caseSensitive=true)
     where T : System.Windows.Forms.Control;
 ```
 #### Type parameters
@@ -567,7 +567,7 @@ A list of controls of type [T](DiGi.Translate.Framework.md#DiGi.Translate.Framew
 Retrieves a list of all controls of the specified type associated with the given form\.
 
 ```csharp
-public static System.Collections.Generic.List<T> Controls<T>(this System.Windows.Forms.Form form)
+public static System.Collections.Generic.List<T>? Controls<T>(this System.Windows.Forms.Form form)
     where T : System.Windows.Forms.Control;
 ```
 #### Type parameters
@@ -596,7 +596,7 @@ A list of controls of type \<typeparam ref="T" /\>, or null if the form is null 
 Retrieves a list of child dependency objects from the specified dependency object\.
 
 ```csharp
-public static System.Collections.Generic.List<TDependencyObject> DependencyObjects<TDependencyObject>(this System.Windows.DependencyObject dependencyObject, bool includeNested=true)
+public static System.Collections.Generic.List<TDependencyObject>? DependencyObjects<TDependencyObject>(this System.Windows.DependencyObject dependencyObject, bool includeNested=true)
     where TDependencyObject : System.Windows.DependencyObject;
 ```
 #### Type parameters
@@ -631,7 +631,7 @@ A list of found dependency objects of type [TDependencyObject](DiGi.Translate.Fr
 Gets the unique identifier for the specified [System\.Windows\.Controls\.DataGridColumn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.datagridcolumn 'System\.Windows\.Controls\.DataGridColumn') within the provided [System\.Windows\.Controls\.DataGrid](https://learn.microsoft.com/en-us/dotnet/api/system.windows.controls.datagrid 'System\.Windows\.Controls\.DataGrid')\.
 
 ```csharp
-public static string Id(this System.Windows.Controls.DataGridColumn dataGridColumn, System.Windows.Controls.DataGrid dataGrid);
+public static string? Id(this System.Windows.Controls.DataGridColumn dataGridColumn, System.Windows.Controls.DataGrid? dataGrid);
 ```
 #### Parameters
 
@@ -658,7 +658,7 @@ A string representing the unique identifier of the column, or `null` if the iden
 Retrieves a unique identifier for the specified dependency object based on its name, type, and index\.
 
 ```csharp
-public static string Id(this System.Windows.DependencyObject dependencyObject);
+public static string? Id(this System.Windows.DependencyObject dependencyObject);
 ```
 #### Parameters
 
@@ -679,7 +679,7 @@ A string representing the identifier of the dependency object, or null if the pr
 Retrieves the identifier for the specified control, incorporating the control's name or type and its hierarchical path\.
 
 ```csharp
-public static string Id(this System.Windows.Forms.Control control);
+public static string? Id(this System.Windows.Forms.Control control);
 ```
 #### Parameters
 
@@ -700,7 +700,7 @@ The identifier of the control as a string, or null if the control is null\.
 Gets the unique identifier for the specified [System\.Windows\.Forms\.DataGridViewColumn](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.datagridviewcolumn 'System\.Windows\.Forms\.DataGridViewColumn')\.
 
 ```csharp
-public static string Id(this System.Windows.Forms.DataGridViewColumn dataGridViewColumn);
+public static string? Id(this System.Windows.Forms.DataGridViewColumn dataGridViewColumn);
 ```
 #### Parameters
 
@@ -721,7 +721,7 @@ The unique identifier of the column, or null if the provided column is null\.
 Extracts a dictionary of text mappings from the columns of the specified [System\.Windows\.Forms\.DataGridView](https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.datagridview 'System\.Windows\.Forms\.DataGridView')\.
 
 ```csharp
-public static System.Collections.Generic.Dictionary<string,string> TextDictionary(this System.Windows.Forms.DataGridView dataGridView);
+public static System.Collections.Generic.Dictionary<string,string>? TextDictionary(this System.Windows.Forms.DataGridView dataGridView);
 ```
 #### Parameters
 
@@ -742,7 +742,7 @@ A [System\.Collections\.Generic\.Dictionary&lt;&gt;](https://learn.microsoft.com
 Extracts a dictionary of text mappings from the specified control for all child controls of type [TControl](DiGi.Translate.Framework.md#DiGi.Translate.Framework.Query.TextDictionary_TControl_(thisSystem.Windows.Forms.Control).TControl 'DiGi\.Translate\.Framework\.Query\.TextDictionary\<TControl\>\(this System\.Windows\.Forms\.Control\)\.TControl')\.
 
 ```csharp
-public static System.Collections.Generic.Dictionary<string,string> TextDictionary<TControl>(this System.Windows.Forms.Control control)
+public static System.Collections.Generic.Dictionary<string,string>? TextDictionary<TControl>(this System.Windows.Forms.Control control)
     where TControl : System.Windows.Forms.Control;
 ```
 #### Type parameters
@@ -771,7 +771,7 @@ A dictionary containing the text mappings, or null if the specified control is n
 Attempts to retrieve a control with the specified identifier from the given control's hierarchy\.
 
 ```csharp
-public static bool TryGetControl(this System.Windows.Forms.Control control, string id, out System.Windows.Forms.Control result);
+public static bool TryGetControl(this System.Windows.Forms.Control control, string id, out System.Windows.Forms.Control? result);
 ```
 #### Parameters
 

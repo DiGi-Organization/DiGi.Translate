@@ -21,13 +21,13 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            string id = frameworkElement.Id();
+            string? id = frameworkElement.Id();
             if (id == null)
             {
                 return false;
             }
 
-            bool result = translator.TryGetText(Enums.Category.Control, id, out string text);
+            bool result = translator.TryGetText(Enums.Category.Control, id, out string? text);
             if (!result)
             {
                 return result;
@@ -40,7 +40,7 @@ namespace DiGi.Translate.Framework
                 return result;
             }
 
-            List<FrameworkElement> frameworkElements_Nested = Query.DependencyObjects<FrameworkElement>(frameworkElement);
+            List<FrameworkElement>? frameworkElements_Nested = Query.DependencyObjects<FrameworkElement>(frameworkElement);
             if (frameworkElements_Nested != null)
             {
                 foreach (FrameworkElement frameworkElement_Nested in frameworkElements_Nested)
@@ -67,7 +67,7 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            string id;
+            string? id;
 
             id = frameworkElement.Id();
             if (id == null)
@@ -75,7 +75,7 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            bool result = translationModel.TryGetText(Enums.Category.Control, id, language, out string text);
+            bool result = translationModel.TryGetText(Enums.Category.Control, id, language, out string? text);
             if (result)
             {
                 frameworkElement.SetText(text);
@@ -86,7 +86,7 @@ namespace DiGi.Translate.Framework
                 return result;
             }
 
-            List<FrameworkElement> frameworkElements_Nested = Query.DependencyObjects<FrameworkElement>(frameworkElement);
+            List<FrameworkElement>? frameworkElements_Nested = Query.DependencyObjects<FrameworkElement>(frameworkElement);
             if (frameworkElements_Nested != null)
             {
                 foreach (FrameworkElement frameworkElement_Nested in frameworkElements_Nested)
@@ -103,7 +103,7 @@ namespace DiGi.Translate.Framework
             {
                 System.Windows.Controls.DataGrid dataGrid = (System.Windows.Controls.DataGrid)(object)frameworkElement;
 
-                ObservableCollection<System.Windows.Controls.DataGridColumn> dataGridColumns = dataGrid?.Columns;
+                ObservableCollection<System.Windows.Controls.DataGridColumn>? dataGridColumns = dataGrid?.Columns;
                 if (dataGridColumns != null)
                 {
                     foreach (System.Windows.Controls.DataGridColumn dataGridColumn in dataGridColumns)

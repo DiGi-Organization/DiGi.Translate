@@ -20,13 +20,13 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            string id = form.Id();
+            string? id = form.Id();
             if (id == null)
             {
                 return false;
             }
 
-            bool result = translator.TryGetText(Enums.Category.Control, id, out string text);
+            bool result = translator.TryGetText(Enums.Category.Control, id, out string? text);
             if (!result)
             {
                 return result;
@@ -39,7 +39,7 @@ namespace DiGi.Translate.Framework
                 return result;
             }
 
-            List<Control> controls = form.Controls();
+            List<Control>? controls = form.Controls();
             if (controls != null)
             {
                 foreach (Control control in controls)
@@ -70,13 +70,13 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            string id = form.Id();
+            string? id = form.Id();
             if (id == null)
             {
                 return false;
             }
 
-            bool result = translationModel.TryGetText(Enums.Category.Control, id, language, out string text);
+            bool result = translationModel.TryGetText(Enums.Category.Control, id, language, out string? text);
             if (result)
             {
                 form.Text = text;
@@ -87,7 +87,7 @@ namespace DiGi.Translate.Framework
                 return result;
             }
 
-            List<Control> controls = form.Controls();
+            List<Control>? controls = form.Controls();
             if (controls != null)
             {
                 foreach (Control control in controls)

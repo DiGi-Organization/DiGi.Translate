@@ -12,7 +12,7 @@ namespace DiGi.Translate.Framework
         /// <param name="dependencyObject">The source dependency object to query.</param>
         /// <param name="includeNested">Indicates whether to recursively include nested child dependency objects.</param>
         /// <returns>A list of found dependency objects of type <typeparamref name="TDependencyObject"/>, or null if no children are present.</returns>
-        public static List<TDependencyObject> DependencyObjects<TDependencyObject>(this DependencyObject dependencyObject, bool includeNested = true) where TDependencyObject : DependencyObject
+        public static List<TDependencyObject>? DependencyObjects<TDependencyObject>(this DependencyObject dependencyObject, bool includeNested = true) where TDependencyObject : DependencyObject
         {
             System.Collections.IEnumerable childrens = LogicalTreeHelper.GetChildren(dependencyObject);
             if (childrens == null)
@@ -38,7 +38,7 @@ namespace DiGi.Translate.Framework
                     continue;
                 }
 
-                List<TDependencyObject> dependencyObjects_Nested = DependencyObjects<TDependencyObject>((DependencyObject)@object);
+                List<TDependencyObject>? dependencyObjects_Nested = DependencyObjects<TDependencyObject>((DependencyObject)@object);
                 if (dependencyObjects_Nested == null)
                 {
                     continue;

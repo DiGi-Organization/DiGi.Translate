@@ -20,13 +20,13 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            string id = window.Id();
+            string? id = window.Id();
             if (id == null)
             {
                 return false;
             }
 
-            bool result = translator.TryGetText(Enums.Category.Control, id, out string text);
+            bool result = translator.TryGetText(Enums.Category.Control, id, out string? text);
             if (!result)
             {
                 return result;
@@ -39,7 +39,7 @@ namespace DiGi.Translate.Framework
                 return result;
             }
 
-            List<FrameworkElement> frameworkElements_Nested = Query.DependencyObjects<FrameworkElement>(window);
+            List<FrameworkElement>? frameworkElements_Nested = Query.DependencyObjects<FrameworkElement>(window);
             if (frameworkElements_Nested != null)
             {
                 foreach (FrameworkElement frameworkElement_Nested in frameworkElements_Nested)
@@ -66,13 +66,13 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            string id = window.Id();
+            string? id = window.Id();
             if (id == null)
             {
                 return false;
             }
 
-            bool result = translationModel.TryGetText(Enums.Category.Control, id, language, out string text);
+            bool result = translationModel.TryGetText(Enums.Category.Control, id, language, out string? text);
             if (result)
             {
                 window.SetText(text);
@@ -83,7 +83,7 @@ namespace DiGi.Translate.Framework
                 return result;
             }
 
-            List<FrameworkElement> frameworkElements_Nested = Query.DependencyObjects<FrameworkElement>(window);
+            List<FrameworkElement>? frameworkElements_Nested = Query.DependencyObjects<FrameworkElement>(window);
             if (frameworkElements_Nested != null)
             {
                 foreach (FrameworkElement frameworkElement_Nested in frameworkElements_Nested)

@@ -11,7 +11,7 @@ namespace DiGi.Translate.Framework
         /// <typeparam name="TControl">The type of control to be retrieved.</typeparam>
         /// <param name="control">The root control to search.</param>
         /// <returns>A dictionary containing the text mappings, or null if the specified control is null or no matching controls are found.</returns>
-        public static Dictionary<string, string> TextDictionary<TControl>(this Control control) where TControl : Control
+        public static Dictionary<string, string>? TextDictionary<TControl>(this Control control) where TControl : Control
         {
             if (control == null)
             {
@@ -20,7 +20,7 @@ namespace DiGi.Translate.Framework
 
             Dictionary<string, string> result = new Dictionary<string, string>();
 
-            List<TControl> controls = Controls<TControl>(control);
+            List<TControl>? controls = Controls<TControl>(control);
             if (controls == null)
             {
                 return null;
@@ -28,17 +28,17 @@ namespace DiGi.Translate.Framework
 
             foreach (TControl control_Temp in controls)
             {
-                string id = control_Temp?.Id();
+                string? id = control_Temp.Id();
                 if (id == null)
                 {
                     continue;
                 }
 
-                result[id] = control_Temp?.Text;
+                result[id] = control_Temp.Text;
 
                 if (control_Temp is DataGridView)
                 {
-                    Dictionary<string, string> dictionary = TextDictionary((DataGridView)(object)control_Temp);
+                    Dictionary<string, string>? dictionary = TextDictionary((DataGridView)(object)control_Temp);
                     if (dictionary != null)
                     {
                         foreach (KeyValuePair<string, string> keyValuePair in dictionary)
@@ -57,9 +57,9 @@ namespace DiGi.Translate.Framework
         /// </summary>
         /// <param name="dataGridView">The <see cref="DataGridView"/> instance to process.</param>
         /// <returns>A <see cref="Dictionary{TKey, TValue}"/> containing column identifiers and their associated values, or <c>null</c> if the columns collection is unavailable.</returns>
-        public static Dictionary<string, string> TextDictionary(this DataGridView dataGridView)
+        public static Dictionary<string, string>? TextDictionary(this DataGridView dataGridView)
         {
-            DataGridViewColumnCollection dataGridViewColumnCollection = dataGridView?.Columns;
+            DataGridViewColumnCollection? dataGridViewColumnCollection = dataGridView?.Columns;
 
             if (dataGridViewColumnCollection == null)
             {
@@ -69,8 +69,8 @@ namespace DiGi.Translate.Framework
             Dictionary<string, string> result = new Dictionary<string, string>();
             foreach (DataGridViewColumn dataGridViewColumn in dataGridViewColumnCollection)
             {
-                string id = dataGridViewColumn.Id();
-                if (string.IsNullOrWhiteSpace(id))
+                string? id = dataGridViewColumn.Id();
+                if (id is null || string.IsNullOrWhiteSpace(id))
                 {
                     continue;
                 }

@@ -10,14 +10,14 @@ namespace DiGi.Translate.Framework
         /// </summary>
         /// <param name="dependencyObject">The dependency object to identify.</param>
         /// <returns>A string representing the identifier of the dependency object, or null if the provided object is null.</returns>
-        public static string Id(this DependencyObject dependencyObject)
+        public static string? Id(this DependencyObject dependencyObject)
         {
             if (dependencyObject == null)
             {
                 return null;
             }
 
-            string result = (dependencyObject as FrameworkElement)?.Name;
+            string? result = (dependencyObject as FrameworkElement)?.Name;
             if (string.IsNullOrWhiteSpace(result))
             {
                 result = dependencyObject.GetType().Name;
@@ -27,10 +27,10 @@ namespace DiGi.Translate.Framework
                 }
             }
 
-            DependencyObject dependencyObject_Parent = LogicalTreeHelper.GetParent(dependencyObject);
+            DependencyObject? dependencyObject_Parent = LogicalTreeHelper.GetParent(dependencyObject);
             if (dependencyObject_Parent != null)
             {
-                string id = dependencyObject_Parent.Id();
+                string? id = dependencyObject_Parent.Id();
                 if (!string.IsNullOrEmpty(id))
                 {
                     result = string.IsNullOrWhiteSpace(result) ? id : string.Format("{0}.{1}", id, result);
@@ -45,7 +45,7 @@ namespace DiGi.Translate.Framework
         /// </summary>
         /// <param name="control">The control for which to retrieve the identifier.</param>
         /// <returns>The identifier of the control as a string, or null if the control is null.</returns>
-        public static string Id(this Control control)
+        public static string? Id(this Control control)
         {
             if (control == null)
             {
@@ -60,7 +60,7 @@ namespace DiGi.Translate.Framework
 
             if (control.Parent != null)
             {
-                string id = control.Parent.Id();
+                string? id = control.Parent.Id();
                 if (!string.IsNullOrEmpty(id))
                 {
                     result = string.Format("{0}.{1}", id, result);
@@ -75,14 +75,14 @@ namespace DiGi.Translate.Framework
         /// </summary>
         /// <param name="dataGridViewColumn">The data grid view column to identify.</param>
         /// <returns>The unique identifier of the column, or null if the provided column is null.</returns>
-        public static string Id(this DataGridViewColumn dataGridViewColumn)
+        public static string? Id(this DataGridViewColumn dataGridViewColumn)
         {
             if (dataGridViewColumn == null)
             {
                 return null;
             }
 
-            string id = Id(dataGridViewColumn.DataGridView);
+            string? id = Id(dataGridViewColumn.DataGridView);
 
             return string.IsNullOrEmpty(id) ? dataGridViewColumn.Name : string.Format("{0}.{1}", id, dataGridViewColumn.Name);
         }
@@ -93,15 +93,15 @@ namespace DiGi.Translate.Framework
         /// <param name="dataGridColumn">The data grid column to identify.</param>
         /// <param name="dataGrid">The data grid containing the column.</param>
         /// <returns>A string representing the unique identifier of the column, or <c>null</c> if the identifier cannot be determined.</returns>
-        public static string Id(this System.Windows.Controls.DataGridColumn dataGridColumn, System.Windows.Controls.DataGrid dataGrid)
+        public static string? Id(this System.Windows.Controls.DataGridColumn dataGridColumn, System.Windows.Controls.DataGrid? dataGrid)
         {
             if (dataGridColumn == null)
             {
                 return null;
             }
 
-            string id = dataGrid?.Id();
-            if (string.IsNullOrWhiteSpace(id))
+            string? id = dataGrid?.Id();
+            if (dataGrid is null || string.IsNullOrWhiteSpace(id))
             {
                 return null;
             }

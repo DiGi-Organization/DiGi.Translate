@@ -14,7 +14,7 @@ namespace DiGi.Translate.Framework
         /// <param name="id">The unique identifier of the control to locate.</param>
         /// <param name="result">When this method returns, contains the found control if successful; otherwise, null.</param>
         /// <returns>True if the control with the specified identifier was found; otherwise, false.</returns>
-        public static bool TryGetControl(this Control control, string id, out Control result)
+        public static bool TryGetControl(this Control control, string id, out Control? result)
         {
             result = null;
 
@@ -23,7 +23,7 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            List<Control> controls = Controls<Control>(control);
+            List<Control>? controls = Controls<Control>(control);
             if (controls == null)
             {
                 return false;
@@ -32,7 +32,8 @@ namespace DiGi.Translate.Framework
             List<Tuple<string, Control>> tuples = new List<Tuple<string, Control>>();
             foreach (Control control_Temp in controls)
             {
-                string id_Control = control_Temp.Id();
+                // Id(Control) is null only for a null control, and Controls<T> skips null children
+                string id_Control = control_Temp.Id()!;
                 if (id.Equals(id_Control))
                 {
                     result = control_Temp;
@@ -52,7 +53,7 @@ namespace DiGi.Translate.Framework
                     }
                 }
 
-                List<string> values = id.Split('.')?.ToList();
+                List<string> values = id.Split('.').ToList();
                 if (values.Count > 1)
                 {
                     string start = values[0];

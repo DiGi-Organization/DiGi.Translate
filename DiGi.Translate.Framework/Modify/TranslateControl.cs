@@ -20,13 +20,13 @@ namespace DiGi.Translate.Framework
                 return false;
             }
 
-            string id = control.Id();
+            string? id = control.Id();
             if (id == null)
             {
                 return false;
             }
 
-            bool result = translator.TryGetText(Enums.Category.Control, id, out string text);
+            bool result = translator.TryGetText(Enums.Category.Control, id, out string? text);
             if (!result)
             {
                 return result;
@@ -39,7 +39,7 @@ namespace DiGi.Translate.Framework
                 return result;
             }
 
-            List<Control> controls_Nested = Query.Controls<Control>(control);
+            List<Control>? controls_Nested = Query.Controls<Control>(control);
             if (controls_Nested != null)
             {
                 foreach (Control control_Nested in controls_Nested)
@@ -61,13 +61,13 @@ namespace DiGi.Translate.Framework
         /// <returns>True if the control's text was successfully translated; otherwise, false.</returns>
         public static bool TranslateControl(this TranslationModel translationModel, Language language, Control control, bool includeNested = true)
         {
-            if (translationModel == null || control == null || language == null)
+            if (translationModel == null || control == null || language is null)
             {
                 return false;
             }
 
             bool result = false;
-            if (translationModel.TryGetText(Enums.Category.Control, control.Id(), language, out string text))
+            if (translationModel.TryGetText(Enums.Category.Control, control.Id(), language, out string? text))
             {
                 control.Text = text;
                 result = true;
@@ -78,7 +78,7 @@ namespace DiGi.Translate.Framework
                 return result;
             }
 
-            List<Control> controls_Nested = Query.Controls<Control>(control);
+            List<Control>? controls_Nested = Query.Controls<Control>(control);
             if (controls_Nested != null)
             {
                 foreach (Control control_Nested in controls_Nested)
@@ -93,7 +93,7 @@ namespace DiGi.Translate.Framework
 
             if (control is DataGridView)
             {
-                DataGridViewColumnCollection dataGridViewColumnCollection = ((DataGridView)control)?.Columns;
+                DataGridViewColumnCollection? dataGridViewColumnCollection = ((DataGridView)control)?.Columns;
                 if (dataGridViewColumnCollection != null)
                 {
                     foreach (DataGridViewColumn dataGridViewColumn in dataGridViewColumnCollection)
